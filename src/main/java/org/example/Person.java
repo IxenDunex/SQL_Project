@@ -19,6 +19,9 @@ public class Person {
         String insert = "insert into person values (" + "'" + this.username + "','" + this.email + "','" + this.pass + "'," + this.enabled + ","+ this.id + ")";
         dbc.executeInsert(insert);
     }
-
+public void delete(DatabaseConnection dbc, Integer id_record) {
+    String insert = "delete from person WHERE id =" + id_record;
+    dbc.executeInsert(insert);
+}
 
 }

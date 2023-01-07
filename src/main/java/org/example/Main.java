@@ -5,7 +5,8 @@ public class Main {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connect();
         Person kazik = new Person("Kazik","em@@@@il", "BlaBla", false, 4 );
-        kazik.save(dbc);
+        kazik.delete(dbc,4);
+
 
     }
 }
