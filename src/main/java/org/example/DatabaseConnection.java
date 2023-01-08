@@ -7,6 +7,7 @@ public class DatabaseConnection {
     public static final String PASS = "HfE3FtXdZRNC4c_5fbKZYmE0BY0NM2fi";
 
     public Connection connection;
+    Statement stm = null;
     public void connect() {
 
         try {
@@ -20,8 +21,9 @@ public class DatabaseConnection {
         System.out.println("Opened database successfully");
     }
 
+    //CREATE
     public void executeInsert(String sql){
-        Statement stm = null;
+
         try {
             stm = this.connection.createStatement();
             stm.execute(sql);
@@ -29,6 +31,17 @@ public class DatabaseConnection {
             throw new RuntimeException(e);
         }
 
+    }
+
+
+    // Delete
+    public int executeDelete(String sql) {
+        try {
+            Statement stm = this.connection.createStatement();
+            return stm.executeUpdate(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

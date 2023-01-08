@@ -38,14 +38,20 @@ public class Main {
                     Person add_person = new Person(username, email, pass, enabled, -1);
                     add_person.create(dbc);
                     break;
+                case 4:
+                    System.out.print("Podaj USERNAME: ");
+                    String search_name = scanner.nextLine();
+                    Person search_record = new Person(search_name, "", "", false,1);
+                    search_record.delete(dbc);
+                    break;
 //
                 case 5:
                     quit = true;
                     break;
+                default:
+                    throw new IllegalStateException("Nieprawidłowa opcja: " + option);
             }
         }
-//        Person kazik = new Person("Kazik","em@@@@il", "BlaBla", false, 4 );
-//        kazik.save(dbc);
 
 }
     }
