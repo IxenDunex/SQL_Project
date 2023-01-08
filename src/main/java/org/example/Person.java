@@ -29,10 +29,17 @@ public class Person {
         dbc.executeInsert(insert);
     }
 
+    public void update(DatabaseConnection dbc) {
+        //String sql = "UPDATE person SET username = " + this.username, email = ?, password = ?, enabled = ? WHERE id = ?";
+        String sql = "UPDATE person SET email = '" + this.email + "' WHERE username = '" + this.username + "'";
+        int count = dbc.executeUpdate(sql);
+        System.out.println("Zmodyfikowano " + count + " rekord w bazie 'PERSON'.");
+    }
+
     public void delete(DatabaseConnection dbc) {
         String sql = "DELETE FROM person WHERE username = '" + this.username + "'";
         int count = dbc.executeDelete(sql);
-        System.out.println("Usunięto " + count + " rekordów.");
+        System.out.println("Usunięto " + count + " rekord w bazie 'PERSON'.");
     }
 
 }

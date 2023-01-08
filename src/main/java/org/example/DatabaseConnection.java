@@ -33,7 +33,15 @@ public class DatabaseConnection {
 
     }
 
-
+    // UPDATE
+    public int executeUpdate(String sql) {
+        try {
+            Statement stm = this.connection.createStatement();
+            return stm.executeUpdate(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     // Delete
     public int executeDelete(String sql) {
         try {

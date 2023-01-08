@@ -12,18 +12,14 @@ public class Main {
 
         //EKRAN POWITALNY
         while (!quit) {
-            System.out.println("Wybierz opcję:");
-            System.out.println("1. Dodaj nowy rekord do bazy 'PERSON'");
-            System.out.println("2. Odczytaj rekord z bazy 'PERSON'");
-            System.out.println("3. Zaktualizuj rekord w bazie 'PERSON'");
-            System.out.println("4. Usuń rekord z bazy 'PERSON'");
-            System.out.println("5. EXIT");
-            System.out.print("> ");
+            MenuQuestions();
 
             int option = scanner.nextInt();
             scanner.nextLine();  //nowy wiersz po wczytaniu int
 
             switch (option) {
+                default:
+                    throw new IllegalStateException("Nieprawidłowa opcja: " + option);
                 case 1:
                     System.out.print("Podaj USERNAME: ");
                     String username = scanner.nextLine();
@@ -38,7 +34,15 @@ public class Main {
                     Person add_person = new Person(username, email, pass, enabled, -1);
                     add_person.create(dbc);
                     break;
-                case 4:
+                case 3:
+                    System.out.print("Podaj nazwę użytkownika: ");
+                    String username_db = scanner.nextLine();
+                    System.out.print("Zmień adres email: ");
+                    String email2 = scanner.nextLine();
+                    Person PersonUpdated = new Person(username_db, email2, "",true,0);
+                    PersonUpdated.update(dbc);
+                    break;
+                    case 4:
                     System.out.print("Podaj USERNAME: ");
                     String search_name = scanner.nextLine();
                     Person search_record = new Person(search_name, "", "", false,1);
@@ -48,10 +52,19 @@ public class Main {
                 case 5:
                     quit = true;
                     break;
-                default:
-                    throw new IllegalStateException("Nieprawidłowa opcja: " + option);
+
             }
         }
-
 }
+
+
+    private static void MenuQuestions() {
+        System.out.println("Wybierz opcję:");
+        System.out.println("1. Dodaj nowy rekord do bazy 'PERSON'");
+        System.out.println("2. Odczytaj rekord z bazy 'PERSON'");
+        System.out.println("3. Aktualizuj rekord w bazie 'PERSON'");
+        System.out.println("4. Usuń rekord z bazy 'PERSON'");
+        System.out.println("5. EXIT");
+        System.out.print("> ");
     }
+}
