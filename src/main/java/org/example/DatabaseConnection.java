@@ -22,7 +22,7 @@ public class DatabaseConnection {
     }
 
     //CREATE
-    public void executeInsert(String sql){
+    public void executeCreate(String sql){
 
         try {
             stm = this.connection.createStatement();
@@ -52,7 +52,13 @@ public class DatabaseConnection {
         }
     }
 
-
-
-
+    // Read
+    public ResultSet executeRead(String sql) {
+        try {
+            Statement stm = this.connection.createStatement();
+            return stm.executeQuery(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
