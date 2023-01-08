@@ -1,8 +1,5 @@
 package org.example;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DatabaseConnection {
     public static final String Host = "jdbc:postgresql://snuffleupagus.db.elephantsql.com/hduydxwm";
@@ -33,6 +30,8 @@ public class DatabaseConnection {
         }
 
     }
+
+
 
 
 }
